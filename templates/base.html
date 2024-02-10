@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="icon" type="image/png" href="/static/images/samurailogo.png" />
+    <title>{% block title %}ГЛАВНАЯ СТРАНИЦА{% endblock %}</title>
+  </head>
+  <body class="flex flex-col h-screen bg-fixed bg-cover bg-center relative">
+    <header class="p-5">
+      <div class="container mx-auto flex flex-wrap items-center">
+        <a href="/">
+          <img
+            src="/static/images/samurailogo.png"
+            alt=""
+            class="h-8 w-8 hover:scale-150"
+          />
+        </a>
+        <a href="/" class="ml-3 text-[20px] hover:text-gray-500"
+          >SAMURAI PLAY</a
+        >
+
+        <nav
+          class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="https://t.me/samuraiplay_admin" class="mr-5 hover:text-gray-500">ПОДДЕРЖКА</a>
+          <a
+            href="{{ url_for('routes.garantii') }}"
+            class="mr-5 hover:text-gray-500"
+            >ГАРАНТИИ</a
+          >
+          <a href="https://vk.com/topic-224639102_50483668" class="mr-5 hover:text-gray-500">ОТЗЫВЫ</a>
+        </nav>
+      </div>
+    </header>
+
+    {% block background %} {% endblock %}
+
+    <main class="flex flex-grow-1">
+      {% block content %}
+      <!-- Ваш контент будет здесь -->
+      {% endblock %}
+    </main>
+
+    <footer
+      class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left"
+    >
+      <div
+        class="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between"
+      >
+        <!-- Social network icons container -->
+      </div>
+
+      <!-- Main container div: holds the entire content of the footer, including four sections (TW elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
+      <div class="mx-6 py-10 text-center md:text-left">
+        <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <!-- TW elements section -->
+          <div class="">
+            <h6
+              class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start"
+            >
+            <img
+            src="/static/images/samurailogo.png"
+            alt=""
+            class="h-8 w-8 hover:scale-150"
+          />
+                <path
+                  d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z"
+                />
+              </svg>
+              SAMURAI PLAY
+            </h6>
+            <p class="mb-4">
+              На нашем сайте вы можете приобрести игровые аккаунты Steam по выгодной цене . После оплаты вы моментально получите доступ к учетным данным: электронная почта, логин и пароль от аккаунта.
+
+
+            </p>
+            <p class="mb-4">
+              Если возникнут вопросы, обращайтесь в нашу поддержку.
+            </p>
+            <p>Спасибо за ваш выбор! Мы ценим ваше доверие.</p>
+          </div>
+          <!-- Products section -->
+         
+          <!-- Useful links section -->
+          
+          <!-- Contact section -->
+          <div>
+            <h6
+              class="mb-4 flex justify-center font-semibold uppercase md:justify-start"
+            >
+              Контакт
+            </h6>
+
+            <p class="mb-4 flex items-center justify-center md:justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="mr-3 h-5 w-5"
+              >
+                <path
+                  d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"
+                />
+                <path
+                  d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"
+                />
+              </svg>
+              samurai-play@bk.ru
+            </p>
+        
+         
+           
+          </div>
+        </div>
+      </div>
+
+      <!--Copyright section-->
+      <div class="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+        <span>
+          
+          © 2024 SAMURAI PLAY
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

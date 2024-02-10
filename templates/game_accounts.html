@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block title %}АККАУНТЫ {{ game.name }} СТИМ{%
+endblock %} {% block background %}
+<div
+  class="absolute inset-0 flex flex-col"
+  style="
+    background-image: url('/static/images/samuraiback.png');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    backdrop-filter: blur(2px);
+    z-index: -1; /* Устанавливаем z-index, чтобы фон был под контентом */
+  "
+></div>
+{% endblock %} {% block content %} {% if accounts %}
+<!-- ✅ Grid Section - Starts Here 👇 -->
+<section
+  id="Projects"
+  class="w-fit mx-auto grid mb-56 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-4 mt-10 mb-5"
+>
+  <!--   ✅ Product card 1 - Starts Here 👇 -->
+  {% for account in accounts %}
+  <div
+    class="w-72 bg-white border-2 border-black shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+  >
+    <img
+      src="{{ account.game.image_path }}"
+      alt="Product"
+      class="h-40 w-72 object-cover rounded-t-xl"
+    />
+    <div class="px-4 py-3 w-72 font-light">
+      <a
+        href="{{ account.steam_profile }}"
+        class="text-blue-600 mr-3 font-light uppercase text-sm hover:text-black"
+        >ПРОФИЛЬ STEAM</a
+      >
+      <p
+        class="text-sm font-normal text-black block capitalize max-h-20 overflow-y-auto"
+      >
+        {{ account.description }}
+      </p>
+      <div class="flex items-center">
+        <p class="text-lg font-semibold text-black cursor-auto my-3">
+          {{ account.price }} рублей
+        </p>
+        <del>
+          <p class="text-sm text-gray cursor-auto ml-2">
+            {{ account.price + 1000 }} рублей
+          </p>
+        </del>
+      </div>
+      <div class="mx-auto flex justify-center items-center">
+        <a
+          href="{{ url_for('routes.buy_account', account_id=account.id) }}"
+          class="inline-block px-8 py-2 bg-green-500 text-white rounded-md hover:bg-green-800 transition duration-300"
+          >Купить аккаунт</a
+        >
+      </div>
+    </div>
+  </div>
+  <!-- ✅ Product card 1 - Ends Here 👆 -->
+  {% endfor %}
+</section>
+{% else %}
+<div class="items-center h-screen w-full text-center mx-auto">
+  <div class="p-6 w-full" style="background-color: rgba(1, 1, 1, 0.9)">
+    <div
+      class="animate-spin mx-auto h-20 w-20 border-t-4 border-b-4 border-red-800 rounded-full mb-4"
+    ></div>
+    <p class="text-xl font-medium text-white">
+      На данный момент аккаунтов {{ game.name }} нет
+    </p>
+  </div>
+</div>
+{% endif %} {% endblock %}

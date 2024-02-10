@@ -1,0 +1,36 @@
+<div class="flex justify-center items-center h-screen">
+  <div class="w-full max-w-md">
+    <h1 class="text-2xl text-center mb-4">Регистрация</h1>
+
+    <form
+      class="bg-white border border-black rounded px-8 pt-6 pb-8 mb-4"
+      method="POST"
+      action=""
+    >
+      {{ form.hidden_tag() }}
+      <div class="text-center">
+        <div class="mb-4">{{ form.username }}</div>
+        {% if form.username.errors %}
+        <p class="text-red-500 text-xs italic">{{ form.username.errors[0] }}</p>
+        {% endif %}
+
+        <div class="mb-4">{{ form.password }}</div>
+        {% if form.password.errors %}
+        <p class="text-red-500 text-xs italic">{{ form.password.errors[0] }}</p>
+        {% endif %}
+        <button
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        >
+          {{ form.submit }}
+        </button>
+      </div>
+    </form>
+
+    <p class="text-center">Уже зарегистрировались?</p>
+    <a
+      href="{{url_for('routes.login')}}"
+      class="block text-center text-blue-500 hover:text-blue-900"
+      >Войти в систему</a
+    >
+  </div>
+</div>
