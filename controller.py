@@ -102,19 +102,17 @@ def buy_account(account_id):
     if not account:
         return jsonify({'error': 'Account not found'}), 404
     payment_data = {
-        'shop_id': 1337,  # Замените на ваш ID магазина
-        'order_id': account.id,  # Используем ID аккаунта как уникальный номер платежа
-        'amount': account.price,  # Сумма платежа
-        'token': API_TOKEN,  # Ваш API токен
-        # Другие необходимые данные, например, метод оплаты, валюта и т.д.
+        'shop_id': 1337,  
+        'order_id': account.id,  
+        'amount': account.price,  
+        'token': API_TOKEN,  
+ 
     }
     response = requests.post(CREATE_PAYMENT_URL, json=payment_data)
     if response.status_code == 200:
         # Получаем ответ от сервера
         payment_info = response.json()
 
-        # Здесь можно добавить обработку ответа и редирект на страницу оплаты или вывод информации о платеже
-        # Например, редирект на страницу оплаты на сайте Rukassa:
         payment_url = payment_info.get('payment_url')
         return redirect(payment_url)
     else:
